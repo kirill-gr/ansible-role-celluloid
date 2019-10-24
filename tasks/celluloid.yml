@@ -1,0 +1,16 @@
+---
+
+- name: Add Celluloid repository
+  apt_repository:
+    repo: ppa:xuzhen666/gnome-mpv
+  become: yes
+  register: celluloid_repo
+- name: Update repositories
+  apt:
+    update_cache: yes
+  become: yes
+  when: celluloid_repo.changed
+- name: Install Celluloid
+  apt:
+    name: celluloid
+  become: yes

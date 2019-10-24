@@ -1,0 +1,7 @@
+---
+
+- name: Install Celluloid
+  include: celluloid.yml
+  tags:
+    - celluloid
+    - media-player
