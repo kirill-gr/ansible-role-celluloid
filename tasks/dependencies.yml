@@ -1,0 +1,16 @@
+---
+
+- name: Add bionic-media repository
+  apt_repository:
+    repo: ppa:mc3man/bionic-media
+  become: yes
+  register: bionic_media_repo
+- name: Update repositories
+  apt:
+    update_cache: yes
+  become: yes
+  when: bionic_media_repo.changed
+- name: Install libmpv1
+  apt:
+    name: libmpv1
+  become: yes

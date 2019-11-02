@@ -1,7 +1,7 @@
 ---
 
+- name: Install Celluloid dependencies
+  import_tasks: dependencies.yml
+  when: ansible_distribution_version == "18.04"
 - name: Install Celluloid
-  include: celluloid.yml
-  tags:
-    - celluloid
-    - media-player
+  import_tasks: celluloid.yml
